@@ -114,25 +114,3 @@ Most errors from ambiguous or multi-token entities.
 
 ---
 
-## 🚀 Installation
-
-```bash
-git clone https://github.com/your-username/climate-text-analytics.git
-cd climate-text-analytics
-pip install -r requirements.txt
-
-⚙️ Usage
-Climate Sentiment Classification
-python sentiment_classification.py --model naive_bayes
-python sentiment_classification.py --model climatebert
-python sentiment_classification.py --model tinybert
-
-Topic Modeling
-python topic_modeling.py --method lda
-python topic_modeling.py --method top2vec
-
-Named Entity Recognition (NER)
-python ner_twitter.py --features custom
-For all scripts, use the -h flag for additional parameters and usage details.
-
-
