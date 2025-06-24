@@ -1,103 +1,131 @@
-Project Overview
-This repository contains code, data, and documentation for a text analytics assessment focused on climate-related text. The project covers three main tasks:
+🌱 Climate Text Analytics
+This repository contains code, data, and documentation for a text analytics project focused on climate-related textual data. The project addresses three key Natural Language Processing (NLP) tasks: Sentiment Classification, Topic Modeling, and Named Entity Recognition (NER).
 
-Classifying climate sentiment using various machine learning and deep learning models.
+📌 Project Overview
+This assessment explores robust NLP methods to extract actionable insights from climate-related texts, particularly focusing on social media (e.g., Twitter) and domain-specific reports.
 
-Identifying topics associated with climate-related risks and opportunities through unsupervised topic modeling.
+Main Tasks:
 
-Performing named entity recognition (NER) on Twitter data using sequence tagging models.
+Climate Sentiment Classification: Classify sentiment in climate texts using ML and deep learning models.
 
-The aim is to provide robust methods and analysis tools for extracting actionable insights from climate-related textual data.
+Topic Modeling: Identify key themes and topics around climate risks and opportunities.
 
-Features
-Climate Sentiment Classification: Implements and compares Naïve Bayes, ClimateBERT, and TinyBERT for sentiment analysis.
+Named Entity Recognition (NER): Extract entities from climate-related Twitter data using sequence tagging.
 
-Topic Modeling: Uses Latent Dirichlet Allocation (LDA) and Top2Vec to discover key themes in climate texts.
-
-Named Entity Recognition: Applies Conditional Random Fields (CRFs) with custom feature engineering for entity extraction from tweets.
-
-Comprehensive Evaluation: Includes detailed performance metrics, error analysis, and visualizations for each task.
-
-Methods
+✨ Features
 Climate Sentiment Classification
-Data Preprocessing: Lowercasing, tokenization, stopword removal, and lemmatization (WordNet).
+
+Implements and compares:
+
+Naïve Bayes
+
+ClimateBERT
+
+TinyBERT
+
+Evaluates performance across nuanced sentiment classes.
+
+Topic Modeling
+
+Uses LDA and Top2Vec to uncover major themes in climate text.
+
+Provides interpretability through word clouds and topic visualizations.
+
+Named Entity Recognition (NER)
+
+Applies Conditional Random Fields (CRFs) with:
+
+Custom feature engineering (word shape, POS tags, Twitter markers).
+
+Trained on the Broad Twitter Corpus (BTC).
+
+Comprehensive Evaluation
+
+Includes metrics: Accuracy, Macro F1, Precision, Recall, Confusion Matrices, Span-level F1, and visual error analysis.
+
+🛠️ Methods Summary
+Climate Sentiment Classification
+Preprocessing: Lowercasing, tokenization, stopword removal, lemmatization.
 
 Models:
 
-Naïve Bayes: Enhanced with text cleaning and hyperparameter tuning.
+Naïve Bayes: With hyperparameter tuning.
 
-ClimateBERT NN: Leverages transfer learning for nuanced sentiment classes.
+ClimateBERT NN: Transfer learning for climate-specific sentiment.
 
-TinyBERT: Provides balanced performance with deep contextual representations.
+TinyBERT: Compact transformer for contextual sentiment.
 
-Evaluation Metrics: Accuracy, macro F1-score, precision, recall, and confusion matrices.
+Evaluation:
+Accuracy | Macro F1 | Precision | Recall | Confusion Matrices
 
 Topic Modeling
-LDA: Applied to Bag-of-Words and TF-IDF representations to find interpretable topics.
+LDA: Bag-of-Words and TF-IDF based topic discovery.
 
-Top2Vec: Uses document embeddings to group semantically similar texts and extract context-aware topics.
+Top2Vec: Embedding-based semantic topic grouping.
 
-Visualization: Word clouds and bar plots for topic prominence and coherence.
+Visualization: Word clouds and topic frequency plots.
 
-Comparison: Discusses interpretability and limitations of each method.
+Comparison: Interpretability vs contextual richness.
 
 Named Entity Recognition (NER) on Twitter
-Sequence Tagging: Implements CRFs for NER, with both basic and custom feature sets.
+Models: CRFs with basic and custom features.
 
-Features: Includes word shape, capitalization, POS tags, context, and Twitter-specific markers (mentions, hashtags, URLs).
+Feature Set: Word shape, capitalization, POS tags, mentions, hashtags, URLs.
 
-Data: Uses the Broad Twitter Corpus (BTC) with BIO tagging scheme.
+Dataset: Broad Twitter Corpus (BTC) with BIO tagging.
 
-Metrics: Reports token-level accuracy, entity-level precision/recall/F1, and span-level F1 for practical NER evaluation.
+Metrics:
+Token Accuracy | Entity-level Precision/Recall/F1 | Span-level F1
 
-Installation
-Clone the repository:
+📈 Results Summary
+Task	Model	Accuracy	Macro F1	Key Notes
+Sentiment Classification	Naïve Bayes	0.771	0.76	High neutral precision, low risk recall
+ClimateBERT NN	0.741	0.75	Best nuanced recall, lower neutral precision
+TinyBERT	0.766	0.77	Balanced performance, some class confusion
+Topic Modeling	LDA	-	-	Topics: energy, risk, carbon, emissions
+Top2Vec	-	-	Topics: stakeholders, renewables, liabilities
+NER (Twitter)	Basic CRF	0.8857	0.63	-
+Custom CRF	0.9364	0.63	Span F1: PER=0.73, LOC=0.54, ORG=0.41
 
+🚧 Limitations and Future Work
+Sentiment Classification:
+Struggles with minority classes and overlapping sentiment contexts.
+Future Work: Data augmentation, ensemble models, domain-specific pretraining.
+
+Topic Modeling:
+LDA may blur topics with shared vocabularies. Top2Vec sensitive to hyperparameters.
+Future Work: Supervised topic models, larger datasets.
+
+NER:
+Errors from ambiguous and multi-token entities.
+Future Work: Neural sequence taggers (e.g., BiLSTM-CRF, transformer-based models), contextual embeddings, data augmentation.
+
+🚀 Installation
 bash
+Copy
+Edit
 git clone https://github.com/your-username/climate-text-analytics.git
 cd climate-text-analytics
-Install dependencies (see requirements.txt):
-
-bash
 pip install -r requirements.txt
-Download any required datasets as described in the data/README.md.
+Download required datasets as described in data/README.md.
 
-Usage
-Climate Sentiment Classification:
-
+⚙️ Usage
+Climate Sentiment Classification
 bash
+Copy
+Edit
 python sentiment_classification.py --model naive_bayes
 python sentiment_classification.py --model climatebert
 python sentiment_classification.py --model tinybert
-Topic Modeling:
-
+Topic Modeling
 bash
+Copy
+Edit
 python topic_modeling.py --method lda
 python topic_modeling.py --method top2vec
-Named Entity Recognition:
-
+Named Entity Recognition (NER)
 bash
+Copy
+Edit
 python ner_twitter.py --features custom
-Refer to each script's help option (-h) for additional parameters.
-
-Results
-Sentiment Classification
-Model	Accuracy	Macro F1	Notable Strengths	Notable Weaknesses
-Naïve Bayes	0.771	0.76	High precision (neutral)	Lower recall (risk class)
-ClimateBERT NN	0.741	0.75	Best recall (nuanced)	Lower precision (neutral)
-TinyBERT	0.766	0.77	Balanced performance	Confuses risk/opportunity
-Topic Modeling
-LDA Topics: "energy", "risk", "carbon", "climate", "emissions", "coal", "oil", etc.
-
-Top2Vec Topics: "stakeholders", "renewables", "sustainability", "risk", "liabilities", "compliance", etc.
-
-NER on Twitter
-Model	Token Acc.	Macro F1	Span F1 (PER/LOC/ORG)
-Basic CRF	0.8857	0.63	-
-Custom CRF	0.9364	0.63	0.73 / 0.54 / 0.41
-Limitations and Future Work
-Sentiment Classification: Struggles with minority classes and overlapping contexts. Future work: data augmentation, ensemble models, domain-specific pretraining.
-
-Topic Modeling: LDA may conflate topics with overlapping vocabulary; Top2Vec sensitive to hyperparameters. Future work: supervised topic models, larger corpora.
-
-NER: Most errors from ambiguous or multi-token entities. Future work: neural sequence taggers, contextual embeddings, data augmentation.
+For all scripts, use the -h flag for additional parameters and usage details.
